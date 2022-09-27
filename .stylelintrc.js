@@ -1,4 +1,15 @@
 // 주석 달기 위해 .js로 저장
+
+/**
+ * Convention Case별 정규표현식
+ * - kebab-case: `^([a-z][a-z0-9]*)(-[a-z0-9]+)*$`
+ * - lowerCamelCase: `^[a-z][a-zA-Z0-9]+$`
+ * - snake_case: `^([a-z][a-z0-9]*)(_[a-z0-9]+)*$`
+ * - UpperCamelCase: `^[A-Z][a-zA-Z0-9]+$`
+ *
+ * For example, for lowerCamelCase class selectors use `"selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"`.
+ */
+
 module.exports = {
   extends: [
     'stylelint-config-recommended-scss', // scss standard rule 적용 (recommended로 설치했다면 recommended로 standard로 설치 했다면 standard로 입력해주세요)
