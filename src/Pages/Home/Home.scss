@@ -1,0 +1,447 @@
+@import '../../styles';
+
+.home-container {
+  min-height: 100vh;
+  background-color: $background;
+
+  button {
+    padding: 0;
+  }
+
+  .avatar {
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &.avatar-26 {
+      width: 22px;
+      height: 22px;
+    }
+
+    &.avatar-32 {
+      width: 32px;
+      height: 32px;
+    }
+
+    &-56 {
+      width: 56px;
+      height: 56px;
+
+      &.is-story {
+        position: relative;
+        z-index: $story-avatar-level;
+      }
+    }
+
+    &-wrapper-66 {
+      @include flexbox(center, center);
+      position: relative;
+      width: 66px;
+      height: 66px;
+
+      &.is-user-profile {
+        justify-content: start;
+      }
+    }
+  }
+
+  .is-story {
+    border: 1px solid $border;
+
+    &-new::before {
+      @include pos-center();
+      content: '';
+      z-index: $story-avatar-border-level;
+      width: 60px;
+      height: 60px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      background-clip: content-box, border-box;
+      background-image: linear-gradient($white, $white),
+        linear-gradient(to bottom, #d82b7d 0%, #f57939 100%);
+      background-origin: border-box;
+    }
+  }
+
+  .container {
+    @include column-flexbox(start, start);
+    width: 100%;
+  }
+
+  /* MAIN */
+  main {
+    @include flexbox(start, start);
+    width: 935px;
+    margin: 0 auto;
+    padding-top: 84px; /* nav height 54px + margin 30px 만큼 margin-top*/
+  }
+
+  /* MAIN-LEFT */
+  .main-left {
+    width: 614px;
+    margin-right: 28px;
+  }
+
+  /* Story */
+  .story-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 16px;
+    overflow-x: scroll;
+    border: 1px solid $border;
+    border-radius: 3px;
+    background-color: $white;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .story-list {
+    @include flexbox(start, start);
+  }
+
+  .story-item {
+    @include column-flexbox(center, center);
+    margin-right: 15px;
+    cursor: pointer;
+
+    .user-id {
+      display: block;
+      max-width: 60px;
+      height: 18px;
+      overflow: hidden;
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      text-overflow: ellipsis;
+    }
+  }
+
+  /* Feed */
+  .feed {
+    &-wrapper {
+      @include column-flexbox(start, start);
+      margin-bottom: 24px;
+      border: 1px solid $border;
+      border-radius: 3px;
+      background-color: $white;
+    }
+
+    &-header {
+      @include flexbox(between, center);
+      width: 100%;
+      height: 60px;
+      padding: 14px 16px;
+
+      &-left {
+        @include flexbox(start, center);
+      }
+
+      .feed.user-info {
+        margin-left: 14px;
+      }
+
+      .more-btn {
+        display: block;
+        width: 20px;
+
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    &-image-wrapper {
+      position: relative;
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      i {
+        @include pos-center(absolute);
+        opacity: 0;
+        color: $red;
+        font-size: 50px;
+      }
+    }
+
+    &-bottom {
+      width: 100%;
+      padding: 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $border;
+    }
+
+    &-controler {
+      @include flexbox(between, start);
+      height: 54px;
+      padding: 8px 0;
+      font-size: 24px;
+
+      i,
+      .fas.is-liked {
+        transition: opacity 300ms ease-in-out, color 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      i:hover {
+        opacity: 0.5;
+      }
+
+      .right {
+        text-align: right;
+      }
+    }
+
+    &-bottom-info {
+      @include column-flexbox(start, start);
+      font-size: 14px;
+    }
+
+    &-like {
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 700;
+
+      dl {
+        @include flexbox(start, center);
+
+        dt {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .icon-group {
+    @include flexbox(start, center);
+
+    &.left {
+      i {
+        position: relative;
+        opacity: 1;
+      }
+
+      .fas {
+        color: transparent;
+      }
+    }
+  }
+
+  .fas.is-liked.fa-heart {
+    color: $red;
+  }
+
+  .icon-item {
+    width: 38px;
+    height: 38px;
+  }
+
+  .feed-desc {
+    @include flexbox(start, center);
+    margin-bottom: 2px;
+
+    .user-id {
+      margin-right: 4px;
+      font-weight: 700;
+    }
+  }
+
+  .feed-desc-group {
+    width: 100%;
+
+    .comment-more {
+      margin-bottom: 8px;
+      color: $gray;
+    }
+
+    .feed-uploaded {
+      margin-bottom: 8px;
+      color: $gray;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+  }
+
+  .feed-comment-item {
+    @include flexbox(between, start);
+    line-height: 1;
+
+    button {
+      padding: 0;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  /* Comment Wrapper */
+  .comment-wrapper {
+    @include flexbox(between, center);
+    width: 100%;
+    height: 53px;
+    padding: 6px 16px;
+
+    i {
+      position: relative;
+      top: 1px;
+      margin-right: 4px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 0;
+    }
+
+    input {
+      width: 500px;
+    }
+  }
+
+  /* MAIN-RIGHT */
+
+  /* User-Profile */
+  .user-profile {
+    @include flexbox(between, center);
+    width: 290px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .user-info {
+    @include column-flexbox(start, start);
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    line-height: 1.2857;
+
+    span {
+      display: block;
+      width: 180px;
+      margin-top: 3px;
+      color: $gray;
+    }
+  }
+
+  .button-primary {
+    padding: 0;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+    color: $blue;
+    font-size: 12px;
+    font-weight: 700;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  /* Recommend Section */
+  .recommendation {
+    width: 100%;
+
+    &-title {
+      @include flexbox(between, center);
+      margin-bottom: 5px;
+      font-weight: 700;
+
+      h3 {
+        color: $gray;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      a {
+        font-size: 12px;
+        letter-spacing: -0.05em;
+      }
+    }
+
+    &-list {
+      @include column-flexbox(center, between);
+      margin-bottom: 12px;
+      padding: 10px 0;
+    }
+
+    &-item {
+      @include flexbox(between, center);
+      margin-bottom: 16px;
+
+      .avatar {
+        margin-left: 5px;
+      }
+
+      .user-info span {
+        display: block;
+        width: 170px;
+        height: 18px;
+        overflow-x: hidden;
+        font-size: 11px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  /* Global Footer */
+  .global-footer {
+    width: 100%;
+    color: #b5b5b5;
+    font-size: 11px;
+
+    &-list {
+      display: flex;
+      margin-bottom: 16px;
+    }
+
+    &-item:not(:last-child) a::after {
+      content: '·';
+      margin: 0 2.75px;
+    }
+  }
+
+  .like-animation {
+    animation: heart-move 3s;
+  }
+
+  @media screen and (max-width: 1024px) {
+    main,
+    .global-nav-wrapper {
+      width: 614px;
+      margin: 0 auto;
+    }
+
+    .main-right {
+      display: none;
+    }
+  }
+
+  @keyframes heart-move {
+    0% {
+      top: 60%;
+      opacity: 1;
+    }
+
+    30% {
+      top: 45%;
+      opacity: 1;
+    }
+
+    60% {
+      opacity: 0;
+    }
+  }
+}

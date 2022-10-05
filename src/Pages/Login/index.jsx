@@ -15,6 +15,8 @@ const Login = () => {
     LOGIN_RULES[key](value)
   );
 
+  // TODO: then then chaining으로 바꾸기
+  // TODO: 너무 Advanced 내용임
   async function tryLoginOrSignup(loginForm) {
     const loginResponse = await fetch(api.login, {
       method: 'POST',

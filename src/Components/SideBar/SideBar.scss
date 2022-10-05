@@ -1,0 +1,5 @@
+@import '/src/styles';
+
+.main-right {
+  @include column-flexbox(start, start);
+}
