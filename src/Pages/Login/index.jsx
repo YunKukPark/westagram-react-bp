@@ -15,7 +15,7 @@ const Login = () => {
     LOGIN_RULES[key](value)
   );
 
-  const tryLoginOrSignup = async loginForm => {
+  async function tryLoginOrSignup(loginForm) {
     const loginResponse = await fetch(api.login, {
       method: 'POST',
       body: JSON.stringify(loginForm),
@@ -26,10 +26,12 @@ const Login = () => {
       body: JSON.stringify(loginForm),
     });
 
-    const response = [loginResponse, signupResponse].find(res => res.ok);
+    // HACK: 영 좋지않은 로직이군요.
+    const response =
+      [loginResponse, signupResponse].find(res => res.ok) ?? loginResponse;
     const data = await response.json();
     return data;
-  };
+  }
 
   const onChangeFormInput = ({ target }) => {
     const { name, value } = target;
@@ -40,10 +42,14 @@ const Login = () => {
     event.preventDefault();
     if (!isFormValid) return alert('아이디와 비밀번호를 확인해주세요.');
 
-    const { token } = await tryLoginOrSignup(formData);
+    const { token, message } = await tryLoginOrSignup(formData);
 
-    localStorage.setItem('user_token', token);
-    navigate('/home');
+    if (token) {
+      localStorage.setItem('user_token', token);
+      navigate('/home');
+    } else {
+      alert(message);
+    }
   };
 
   return (
