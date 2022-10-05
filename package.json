@@ -41,8 +41,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
-    "stylelint": "^14.12.1",
-    "stylelint-config-prettier": "^9.0.3",
+    "stylelint": "^14.13.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-property-sort-order-smacss": "^9.0.0",
     "stylelint-config-recommended-scss": "^7.0.0",
     "stylelint-scss": "^4.3.0"
