@@ -1,0 +1,68 @@
+@import '../../styles';
+
+.wrapper {
+  @include flexbox(center, center);
+  height: 100vh;
+
+  .login-form {
+    @include column-flexbox(center, center);
+    width: 350px;
+    padding: 20px 40px;
+    border: 1px solid $border;
+
+    input,
+    button {
+      display: block;
+      width: 100%;
+      margin-bottom: 6px;
+      padding: 10px;
+      border: 1px solid $border;
+      border-radius: 5px;
+      background-color: $background;
+      font-size: 12px;
+    }
+
+    .logo {
+      margin-top: 22px;
+      margin-bottom: 50px;
+      font-family: 'Lobster', cursive;
+      font-size: 50px;
+      letter-spacing: -0.05em;
+    }
+
+    .lost-password {
+      border: 0;
+      background-color: $white;
+      color: $blue;
+      font-size: 14px;
+      letter-spacing: -0.05em;
+      line-height: 1.285;
+    }
+  }
+
+  .input-group {
+    @include column-flexbox(start, start);
+    width: 100%;
+    margin-bottom: 70px;
+
+    input {
+      margin-bottom: 6px;
+    }
+
+    .login-button {
+      margin-top: 10px;
+      padding: 8px;
+      transition: opacity 0.3s ease-in-out;
+      border: 0;
+      background-color: $blue;
+      color: $white;
+      font-size: 14px;
+      font-weight: 700;
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+  }
+}
