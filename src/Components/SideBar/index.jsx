@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Footer from './Footer';
 import UserProfile from './UserProfile';
+import RecommendList from './Recommend';
 import './SideBar.scss';
-import RecommendList from './Recommend/List';
 
 const Sidebar = props => {
   return (

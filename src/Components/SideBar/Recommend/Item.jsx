@@ -1,3 +1,4 @@
+import Avatar from 'Components/Avatar';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,11 +7,7 @@ const RecommendItem = props => {
 
   return (
     <li className="recommendation-item">
-      <div className="avatar avatar-32">
-        <Link to="#">
-          <img src={avatarImage} alt={`${userName}의 아바타`} />
-        </Link>
-      </div>
+      <Avatar size="medium" image={avatarImage} />
       <div className="user-info">
         <strong>
           <Link to="#">{userName}</Link>
