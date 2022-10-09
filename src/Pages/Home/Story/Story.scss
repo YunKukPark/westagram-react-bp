@@ -1,0 +1,65 @@
+@import 'styles';
+
+.story-wrapper {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 16px;
+  overflow-x: scroll;
+  border: 1px solid $border;
+  border-radius: 3px;
+  background-color: $white;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .story-list {
+    @include flexbox(start, center);
+  }
+
+  .story-item {
+    @include column-flexbox(center, center);
+    margin-right: 15px;
+    cursor: pointer;
+
+    .avatar-wrapper {
+      @include flexbox(center, center);
+      position: relative;
+      width: 66px;
+      height: 66px;
+    }
+
+    .is-story {
+      position: relative;
+      z-index: $story-avatar-level;
+    }
+
+    .user-id {
+      display: block;
+      max-width: 60px;
+      height: 18px;
+      overflow: hidden;
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .is-story {
+    border: 1px solid $border;
+
+    &-new::before {
+      @include pos-center();
+      content: '';
+      z-index: $story-avatar-border-level;
+      width: 60px;
+      height: 60px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      background-clip: content-box, border-box;
+      background-image: linear-gradient($white, $white),
+        linear-gradient(to bottom, #d82b7d 0%, #f57939 100%);
+      background-origin: border-box;
+    }
+  }
+}

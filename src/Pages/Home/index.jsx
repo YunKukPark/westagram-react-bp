@@ -1,7 +1,21 @@
 import React from 'react';
+import Nav from 'Components/Nav';
+import Contents from './Contents';
+import Sidebar from 'Components/SideBar';
+import './Home.scss';
 
-const Home = () => {
-  return <div>Home이다.</div>;
+const USER_INFO_URL = 'https://westagram-signup.herokuapp.com/profile';
+
+const Main = () => {
+  return (
+    <div className="container">
+      <Nav />
+      <main>
+        <Contents />
+        <Sidebar />
+      </main>
+    </div>
+  );
 };
 
-export default Home;
+export default Main;
