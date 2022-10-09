@@ -1,0 +1,34 @@
+@import 'styles';
+
+.avatar {
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.small {
+    width: 26px;
+    height: 26px;
+  }
+
+  &.medium {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.large {
+    width: 56px;
+    height: 56px;
+  }
+
+  &.x-large {
+    width: 66px;
+    height: 66px;
+  }
+}

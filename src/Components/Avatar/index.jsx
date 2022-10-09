@@ -5,8 +5,8 @@ import './Avatar.scss';
 
 const Avatar = props => {
   const {
-    username,
-    className,
+    username = '',
+    className = '',
     image = defaultAvatar,
     size = 'small',
     to,
@@ -15,7 +15,7 @@ const Avatar = props => {
 
   const alt = `${username} 님의 프로필 사진`;
 
-  if (to != null) {
+  if (to) {
     return (
       <Link className={`avatar ${size} ${className}`} to={to}>
         <img src={image} alt={alt} />
