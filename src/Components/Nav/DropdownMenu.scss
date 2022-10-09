@@ -1,0 +1,82 @@
+@import 'styles';
+
+.dropdown {
+  position: relative;
+
+  .avatar:hover::after,
+  .avatar.is-active::after {
+    @include pos-center(absolute);
+    content: '';
+    width: 26px;
+    height: 26px;
+    border: 2px solid $gray;
+    border-radius: 50%;
+  }
+
+  &-content {
+    position: absolute;
+    z-index: $drop-down-level;
+    top: 30px;
+    left: -175px;
+    width: 225px;
+    padding: 10px 0;
+    border: 1px solid $border;
+    border-radius: 5px;
+    background-color: $white;
+    font-size: 16px;
+
+    // ToolTip style
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -24px;
+      left: 72%;
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-top: 12px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 10px solid transparent;
+    }
+
+    &::before {
+      border-bottom-color: #e0e2e7;
+    }
+
+    &::after {
+      top: -22px;
+      border-bottom-color: $white;
+    }
+  }
+
+  .dropdown-item {
+    @include flexbox(start, center);
+    height: 35px;
+    padding: 0 15px;
+    font-size: 14px;
+
+    i {
+      position: relative;
+      width: 14px;
+      height: 14px;
+      margin-right: 10px;
+      font-size: 14px;
+
+      .fa-bookmark {
+        left: 1px;
+      }
+    }
+
+    &:hover {
+      background-color: $background;
+    }
+
+    &:last-child {
+      padding: 10px 15px 0 15px;
+      border-top: 1px solid $border;
+    }
+  }
+}

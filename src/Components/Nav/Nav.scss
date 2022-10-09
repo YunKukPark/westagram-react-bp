@@ -1,4 +1,4 @@
-@import '../../styles';
+@import 'styles';
 
 .global-nav-bar {
   @include flexbox(start, center);
@@ -11,16 +11,16 @@
   height: 54px;
   border-bottom: 1px solid $border;
   background-color: $white;
-}
 
-.logo {
-  font-size: 28px;
-}
+  .logo {
+    font-size: 28px;
+  }
 
-.global-nav-wrapper {
-  @include flexbox(between, center);
-  width: 935px;
-  margin: 0 auto;
+  .global-nav-wrapper {
+    @include flexbox(between, center);
+    width: 935px;
+    margin: 0 auto;
+  }
 }
 
 .search-input-wrapper {
@@ -52,11 +52,10 @@
 .user-action-item {
   @include flexbox;
   position: relative;
-  margin-right: 22px;
   cursor: pointer;
 
-  &:last-child {
-    margin-right: 0;
+  &:not(:last-child) {
+    margin-right: 22px;
   }
 
   i {
@@ -72,130 +71,5 @@
     height: 4px;
     border-radius: 50%;
     background-color: $red;
-  }
-}
-
-.my-menu {
-  position: relative;
-
-  .avatar:hover::after,
-  .avatar.is-active::after {
-    @include pos-center(absolute);
-    content: '';
-    width: 26px;
-    height: 26px;
-    border: 2px solid $gray;
-    border-radius: 50%;
-  }
-
-  &-content {
-    position: absolute;
-    z-index: $drop-down-level;
-    top: 37px;
-    left: -175px;
-    width: 225px;
-    padding: 10px 0;
-    border: 1px solid $border;
-    border-radius: 5px;
-    background-color: $white;
-    font-size: 16px;
-
-    // ToolTip style
-    &::before,
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: -24px;
-      left: 83%;
-      width: 0;
-      height: 0;
-      transform: translateX(-50%);
-      border-top: 12px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 12px solid transparent;
-      border-left: 10px solid transparent;
-    }
-
-    &::before {
-      border-bottom-color: #e0e2e7;
-    }
-
-    &::after {
-      top: -22px;
-      border-bottom-color: $white;
-    }
-  }
-
-  &-item {
-    @include flexbox(start, center);
-    height: 35px;
-    padding: 0 15px;
-    font-size: 14px;
-
-    i {
-      position: relative;
-      width: 14px;
-      height: 14px;
-      margin-right: 10px;
-      font-size: 14px;
-
-      .fa-bookmark {
-        left: 1px;
-      }
-    }
-
-    &:hover {
-      background-color: $background;
-    }
-
-    &:last-child {
-      padding: 10px 15px 0 15px;
-      border-top: 1px solid $border;
-    }
-  }
-}
-
-.avatar {
-  display: block;
-  overflow: hidden;
-  border-radius: 50%;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &-26 {
-    width: 26px;
-    height: 26px;
-  }
-
-  &-32 {
-    width: 32px;
-    height: 32px;
-  }
-
-  &-56 {
-    width: 56px;
-    height: 56px;
-
-    &.is-story {
-      position: relative;
-      z-index: $story-avatar-level;
-    }
-  }
-
-  &-wrapper-66 {
-    @include flexbox(center, center);
-    position: relative;
-    width: 66px;
-    height: 66px;
-
-    &.is-user-profile {
-      justify-content: start;
-    }
   }
 }
