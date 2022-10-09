@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import DropdownMenu from './DropdownMenu';
 import './Nav.scss';
+import Avatar from 'Components/Avatar';
 
 const Nav = () => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
@@ -30,15 +31,12 @@ const Nav = () => {
           </div>
 
           <div className="user-action-item my-menu" ref={myMenuButton}>
-            <button
+            <Avatar
+              className={`dropdown-button ${isShowDropdown && 'is-active'}`}
+              image={avatar}
+              size="small"
               onClick={handleClickAvatarButton}
-              type="button"
-              className={`dropdown-button avatar avatar-26 ${
-                isShowDropdown && 'is-active'
-              }`}
-            >
-              <img src={avatar} alt="유저아바타" />
-            </button>
+            />
             {isShowDropdown && (
               <DropdownMenu
                 myMenuButton={myMenuButton}
