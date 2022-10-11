@@ -25,19 +25,19 @@ export default RecommendList;
 const RECOMMENDATIONS = [
   {
     key: 0,
-    avatarImage: './mock/images/recommend-01.jpg',
+    avatarImage: './mock/images/recommend/01.jpg',
     userName: 'console_table',
     recommendState: 'Instagram에 새로 가입했습니다',
   },
   {
     key: 1,
-    avatarImage: './mock/images/recommend-02.jpg',
+    avatarImage: './mock/images/recommend/02.jpg',
     userName: 'console_log',
     recommendState: '김개발',
   },
   {
     key: 2,
-    avatarImage: './mock/images/recommend-03.jpg',
+    avatarImage: './mock/images/recommend/03.jpg',
     userName: 'hello_world',
     recommendState: 'wecode_bootcamp님 외 12명이 팔로우합니다',
   },
