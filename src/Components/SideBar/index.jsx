@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from './Footer';
 import UserProfile from './UserProfile';
 import RecommendList from './Recommend';
-import './SideBar.scss';
+import Footer from './Footer';
+import './Sidebar.scss';
 
-const Sidebar = props => {
+const Sidebar = () => {
   return (
     <aside className="main-right">
       <UserProfile />

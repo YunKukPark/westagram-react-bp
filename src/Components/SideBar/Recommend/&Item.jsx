@@ -1,13 +1,14 @@
-import Avatar from 'Components/Avatar';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Avatar from 'Components/Avatar';
+import defaultAvatar from 'assets/images/avatar-default.jpg';
 
 const RecommendItem = props => {
   const { avatarImage, userName, recommendState } = props;
 
   return (
     <li className="recommendation-item">
-      <Avatar size="medium" image={avatarImage} />
+      <Avatar size="medium" image={avatarImage || defaultAvatar} />
       <div className="user-info">
         <strong>
           <Link to="#">{userName}</Link>

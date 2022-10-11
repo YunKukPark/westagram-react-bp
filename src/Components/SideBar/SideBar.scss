@@ -1,7 +1,53 @@
-@import '/src/styles';
+@import 'styles';
 
 .main-right {
   @include column-flexbox(start, start);
+}
+
+.recommendation {
+  width: 100%;
+
+  &-title {
+    @include flexbox(between, center);
+    margin-bottom: 5px;
+    font-weight: 700;
+
+    h3 {
+      color: $gray;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    a {
+      font-size: 12px;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  &-list {
+    @include column-flexbox(center, between);
+    margin-bottom: 12px;
+    padding: 10px 0;
+  }
+
+  &-item {
+    @include flexbox(between, center);
+    margin-bottom: 16px;
+
+    .avatar {
+      margin-left: 5px;
+    }
+
+    .user-info span {
+      display: block;
+      width: 170px;
+      height: 18px;
+      overflow-x: hidden;
+      font-size: 11px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 }
 
 /* Global Footer */

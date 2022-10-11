@@ -1,0 +1,36 @@
+@import 'styles';
+
+.user-profile {
+  @include flexbox(between, center);
+  width: 290px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  @include column-flexbox(start, start);
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.2857;
+
+  span {
+    display: block;
+    width: 180px;
+    margin-top: 3px;
+    color: $gray;
+  }
+}
+
+.button-primary {
+  padding: 0;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  color: $blue;
+  font-size: 12px;
+  font-weight: 700;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}

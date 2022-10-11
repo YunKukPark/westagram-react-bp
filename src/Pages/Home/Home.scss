@@ -18,8 +18,6 @@
     margin-right: 28px;
   }
 
-  /* Story */
-
   /* Feed */
   .feed {
     &-wrapper {
@@ -209,88 +207,7 @@
 
   /* MAIN-RIGHT */
 
-  /* User-Profile */
-  .user-profile {
-    @include flexbox(between, center);
-    width: 290px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  .user-info {
-    @include column-flexbox(start, start);
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    line-height: 1.2857;
-
-    span {
-      display: block;
-      width: 180px;
-      margin-top: 3px;
-      color: $gray;
-    }
-  }
-
-  .button-primary {
-    padding: 0;
-    transition: opacity 0.3s ease-in-out;
-    opacity: 1;
-    color: $blue;
-    font-size: 12px;
-    font-weight: 700;
-
-    &:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-  }
-
   /* Recommend Section */
-  .recommendation {
-    width: 100%;
-
-    &-title {
-      @include flexbox(between, center);
-      margin-bottom: 5px;
-      font-weight: 700;
-
-      h3 {
-        color: $gray;
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      a {
-        font-size: 12px;
-        letter-spacing: -0.05em;
-      }
-    }
-
-    &-list {
-      @include column-flexbox(center, between);
-      margin-bottom: 12px;
-      padding: 10px 0;
-    }
-
-    &-item {
-      @include flexbox(between, center);
-      margin-bottom: 16px;
-
-      .avatar {
-        margin-left: 5px;
-      }
-
-      .user-info span {
-        display: block;
-        width: 170px;
-        height: 18px;
-        overflow-x: hidden;
-        font-size: 11px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-  }
 
   .like-animation {
     animation: heart-move 3s;

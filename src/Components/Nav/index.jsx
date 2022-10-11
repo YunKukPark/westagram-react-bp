@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
 import DropdownMenu from './DropdownMenu';
-import './Nav.scss';
 import Avatar from 'Components/Avatar';
+import './Nav.scss';
 
 const Nav = () => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
