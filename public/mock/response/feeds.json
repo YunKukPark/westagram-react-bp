@@ -2,8 +2,8 @@
   {
     "feedId": 0,
     "userName": "seha_park._.",
-    "userAvatar": "./assets/yunkuk/image/yunkuk-avatar.jpg",
-    "feedImg": "./assets/yunkuk/image/feedImage1.jpeg",
+    "userAvatar": "./mock/images/avatar/user.jpg",
+    "feedImg": "./mock/images/feed/01.jpg",
     "content": "맛있다 💪🏻",
     "likeHit": 123,
     "comments": [
@@ -22,8 +22,8 @@
   {
     "feedId": 1,
     "userName": "ctrsound",
-    "userAvatar": "./assets/yunkuk/image/storyImage06.jpg",
-    "feedImg": "./assets/yunkuk/image/feedImage02.jpg",
+    "userAvatar": "./mock/images/avatar/default.jpg",
+    "feedImg": "./mock/images/feed/02.jpg",
     "content": "[오늘의 난 미지근하게 축제] 음반 판매 오픈! 🎉",
     "likeHit": 142,
     "comments": [
