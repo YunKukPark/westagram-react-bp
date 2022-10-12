@@ -15,3 +15,5 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+//폴더명 변경 필요  SideBar->Sidebar

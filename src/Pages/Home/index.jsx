@@ -6,7 +6,7 @@ import './Home.scss';
 
 const USER_INFO_URL = 'https://westagram-signup.herokuapp.com/profile';
 
-const Main = () => {
+const Home = () => {
   return (
     <div className="container">
       <Nav />
@@ -18,4 +18,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;

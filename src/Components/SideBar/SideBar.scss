@@ -1,4 +1,5 @@
 @import 'styles';
+//파일명 SideBar->Sidebar로 변경필요
 
 .main-right {
   @include column-flexbox(start, start);
