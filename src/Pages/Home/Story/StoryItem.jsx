@@ -1,5 +1,5 @@
 import React from 'react';
-import Avatar from 'Components/Avatar';
+import Avatar from 'Components/Avatar/Avatar';
 import defaultAvatar from 'assets/images/avatar-default.jpg';
 
 function StoryItem(props) {

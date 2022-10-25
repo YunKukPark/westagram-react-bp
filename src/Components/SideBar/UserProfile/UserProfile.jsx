@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
-import Avatar from 'Components/Avatar';
+import Avatar from 'Components/Avatar/Avatar';
 import './UserProfile.scss';
 
 const UserProfile = () => {

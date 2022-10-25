@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from 'Components/Avatar';
+import Avatar from 'Components/Avatar/Avatar';
 import defaultAvatar from 'assets/images/avatar-default.jpg';
 
 const RecommendItem = props => {
