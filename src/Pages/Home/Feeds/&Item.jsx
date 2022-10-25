@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Avatar from 'Components/Avatar/Avatar';
 import CommentInput from './CommentInput';
 import FeedFooter from './&Footer';
-import Avatar from 'Components/Avatar';
 import './Feeds.scss';
 
 const Feed = props => {

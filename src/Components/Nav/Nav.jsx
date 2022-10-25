@@ -1,16 +1,19 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import avatar from 'assets/images/avatar.jpg';
-import DropdownMenu from './DropdownMenu';
 import Avatar from 'Components/Avatar';
+import useOutsideClick from 'hooks/useOutsideClick';
+import { cn, cond } from 'lib/utils/styles';
+import DropdownMenu from './DropdownMenu';
 import './Nav.scss';
 
 const Nav = () => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
   const myMenuButton = useRef();
   const hideDropdown = () => setIsShowDropdown(false);
-
   const handleClickAvatarButton = () => setIsShowDropdown(!isShowDropdown);
+
+  useOutsideClick(myMenuButton, hideDropdown);
 
   return (
     <nav className="global-nav-bar">
@@ -32,17 +35,15 @@ const Nav = () => {
 
           <div className="user-action-item my-menu" ref={myMenuButton}>
             <Avatar
-              className={`dropdown-button ${isShowDropdown && 'is-active'}`}
+              className={cn(
+                'dropdown-button',
+                cond(isShowDropdown, 'is-active')
+              )}
               image={avatar}
               size="small"
               onClick={handleClickAvatarButton}
             />
-            {isShowDropdown && (
-              <DropdownMenu
-                myMenuButton={myMenuButton}
-                hideDropdown={hideDropdown}
-              />
-            )}
+            <DropdownMenu show={isShowDropdown} />
           </div>
         </div>
       </div>

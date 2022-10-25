@@ -1,39 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from 'lib/api';
 import './Login.scss';
-
-const LOGIN_RULES = {
-  id: value => value.indexOf('@') !== -1,
-  password: value => value.length > 5,
-};
+import { validator } from 'lib/validator';
+import { tryLoginOrSignup } from 'lib/utils/fetchers';
 
 const Login = () => {
   const [formData, setFormData] = useState({ id: '', password: '' });
+
   const navigate = useNavigate();
   const isFormValid = Object.entries(formData).every(([key, value]) =>
-    LOGIN_RULES[key](value)
+    validator[key](value)
   );
-
-  // TODO: then then chaining으로 바꾸기
-  // TODO: 너무 Advanced 내용임
-  async function tryLoginOrSignup(loginForm) {
-    const loginResponse = await fetch(api.login, {
-      method: 'POST',
-      body: JSON.stringify(loginForm),
-    });
-
-    const signupResponse = await fetch(api.signup, {
-      method: 'POST',
-      body: JSON.stringify(loginForm),
-    });
-
-    // HACK: 영 좋지않은 로직이군요.
-    const response =
-      [loginResponse, signupResponse].find(res => res.ok) ?? loginResponse;
-    const data = await response.json();
-    return data;
-  }
 
   const onChangeFormInput = ({ target }) => {
     const { name, value } = target;
@@ -46,12 +23,10 @@ const Login = () => {
 
     const { token, message } = await tryLoginOrSignup(formData);
 
-    if (token) {
-      localStorage.setItem('user_token', token);
-      navigate('/home');
-    } else {
-      alert(message);
-    }
+    if (!token) return alert(message);
+
+    localStorage.setItem('token', token);
+    navigate('/home');
   };
 
   return (

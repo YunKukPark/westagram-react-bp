@@ -1,0 +1,14 @@
+@import 'styles';
+
+.page-not-found {
+  @include flexbox;
+  width: 100%;
+  height: 100vh;
+  background-color: #eee;
+
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}

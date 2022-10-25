@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Feeds from './Feed';
-import Story from './Story';
+import React from 'react';
+import Feeds from './Feeds';
+import Story from './Story/Story';
 
 const Contents = () => {
   return (

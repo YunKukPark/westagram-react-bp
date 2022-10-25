@@ -1,5 +1,6 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
+  "plugins": ["import"],
   "rules": {
     "no-var": "warn", // var 금지
     "no-multiple-empty-lines": "warn", // 여러 줄 공백 금지
@@ -14,6 +15,56 @@
     "react/no-unused-state": "warn", // 사용되지 않는 state
     "react/jsx-key": "warn", // 반복문으로 생성하는 요소에 key 강제
     "react/self-closing-comp": "warn", // 셀프 클로징 태그 가능하면 적용
-    "react/jsx-curly-brace-presence": "warn" // jsx 내 불필요한 중괄호 금지
+    "react/jsx-curly-brace-presence": "warn", // jsx 내 불필요한 중괄호 금지
+    "import/order": [
+      "error",
+      {
+        /* import order 순서 */
+        "groups": [
+          "builtin", // nodejs 내장 모듈
+          "external", // 외부 모듈
+          "internal", // 내부 모듈
+          ["sibling", "parent", "index"], // 형제, 부모, index
+          "type", // type
+          "object", // object,
+          "unknown" // unknown
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react", // react 모듈은 최상단 위치
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "Components/**", // Components는 외부모듈 이후에 바로 위치
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "Pages/**", // Pages는 내부 모듈 전에 위치
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "assets/**", // assets 내부 파일들은 unknown 이전에 위치
+            "patternOptions": { "matchBase": true },
+            "group": "unknown",
+            "position": "before"
+          },
+          {
+            "pattern": "*.scss", // scss 파일은 unknown 이후에 위치
+            "patternOptions": { "matchBase": true },
+            "group": "unknown",
+            "position": "after"
+          },
+          {
+            "pattern": "./data", // dummy data는 제일 마지막에 위치
+            "patternOptions": { "matchBase": true },
+            "group": "unknown",
+            "position": "after"
+          }
+        ]
+      }
+    ]
   }
 }

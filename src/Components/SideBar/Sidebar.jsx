@@ -1,7 +1,7 @@
 import React from 'react';
-import UserProfile from './UserProfile';
-import RecommendList from './Recommend';
-import Footer from './Footer';
+import UserProfile from './UserProfile/UserProfile';
+import RecommendList from './Recommend/&List';
+import Footer from './Footer/Footer';
 import './Sidebar.scss';
 
 const Sidebar = () => {
@@ -15,5 +15,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-//폴더명 변경 필요  SideBar->Sidebar

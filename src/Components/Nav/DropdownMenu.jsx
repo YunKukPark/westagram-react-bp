@@ -1,23 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './DropdownMenu.scss';
 
-function DropdownMenu(props) {
-  const { myMenuButton, hideDropdown } = props;
-
-  useEffect(() => {
-    const listener = event => {
-      if (myMenuButton.current.contains(event.target)) return;
-      hideDropdown();
-    };
-
-    document.addEventListener('click', listener);
-
-    return () => {
-      document.removeEventListener('click', listener);
-    };
-  }, []);
-
+function DropdownMenu({ show }) {
+  if (!show) return;
   return (
     <div className="dropdown">
       <div className="dropdown-layer" />
