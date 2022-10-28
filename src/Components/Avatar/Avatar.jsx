@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import defaultAvatar from 'assets/images/avatar-default.jpg';
 import { Link } from 'react-router-dom';
 import './Avatar.scss';
@@ -30,4 +30,4 @@ const Avatar = props => {
   );
 };
 
-export default Avatar;
+export default memo(Avatar);
