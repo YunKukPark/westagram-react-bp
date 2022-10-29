@@ -18,8 +18,8 @@ const CommentInput = props => {
 
       const newComment = {
         id: comments.length + 1,
-        userName: 'hello._.',
-        content: userComment,
+        name: 'hello._.',
+        body: userComment,
       };
       handleComment.add(newComment);
 

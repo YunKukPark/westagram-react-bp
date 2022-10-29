@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Feed from './Feed/Feed';
-import './Feeds.scss';
 
 const DATA_URL = '/mock/response';
 

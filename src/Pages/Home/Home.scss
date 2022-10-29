@@ -18,31 +18,6 @@
     margin-right: 28px;
   }
 
-  /* Comment Wrapper */
-  .comment-wrapper {
-    @include flexbox(between, center);
-    width: 100%;
-    height: 53px;
-    padding: 6px 16px;
-
-    i {
-      position: relative;
-      top: 1px;
-      margin-right: 4px;
-      font-size: 18px;
-    }
-
-    button {
-      padding: 0;
-    }
-
-    input {
-      width: 500px;
-    }
-  }
-
-  /* MAIN-RIGHT */
-
   /* Recommend Section */
 
   .like-animation {

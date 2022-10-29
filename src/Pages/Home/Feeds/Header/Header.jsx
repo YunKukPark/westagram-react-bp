@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import Avatar from 'Components/Avatar';
 import { Link } from 'react-router-dom';
+import './Header.scss';
 
 const Header = ({ userAvatar, userName }) => {
   return (

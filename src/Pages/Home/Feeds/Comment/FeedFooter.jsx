@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
+import './FeedFooter.scss';
 
 const FeedFooter = props => {
   const { userName, content, comments, handleComment } = props;
   const [isListOpen, setIsListOpen] = useState(false);
+  const toggleList = () => setIsListOpen(prev => !prev);
 
   return (
     <>
       <div className="feed-desc-group">
-        <dl className="feed-desc">
+        <dl className="feed-desc post">
           <dt className="user-id">{userName}</dt>
           <dd className="feed-content">{content}</dd>
         </dl>
@@ -33,12 +35,7 @@ const FeedFooter = props => {
           })}
         </ul>
         {comments.length > 3 && (
-          <p
-            className="comment-more"
-            onClick={() => {
-              setIsListOpen(!isListOpen);
-            }}
-          >
+          <p className="comment-more" onClick={toggleList}>
             {isListOpen ? `간략히` : `댓글 ${comments.length}개 모두 보기`}
           </p>
         )}

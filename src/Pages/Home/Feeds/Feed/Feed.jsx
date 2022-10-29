@@ -1,5 +1,5 @@
 import React, { memo, useState, useEffect } from 'react';
-import FeedFooter from '../Comment/Footer';
+import FeedFooter from '../Comment/FeedFooter';
 import './Feed.scss';
 import Header from '../Header/Header';
 
@@ -7,13 +7,12 @@ const Feed = ({ feed }) => {
   const { feedId, userName, userAvatar, feedImg, content, likeHit } = feed;
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const [like, setLike] = useState(false);
 
   const toggleLike = () => setLike(prev => !prev);
 
   const likeInfo = {
-    hit: like ? likeHit + 1 : likeHit - 1,
+    hit: like ? likeHit + 1 : likeHit,
     class: `fa-heart ${like ? 'fas is-liked' : 'far'} `,
     animate: like && 'like-animation',
   };
