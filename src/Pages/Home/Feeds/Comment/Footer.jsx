@@ -32,7 +32,7 @@ const FeedFooter = props => {
             );
           })}
         </ul>
-        {comments?.length > 3 && (
+        {comments.length > 3 && (
           <p
             className="comment-more"
             onClick={() => {

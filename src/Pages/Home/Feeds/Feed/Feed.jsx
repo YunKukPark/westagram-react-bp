@@ -1,60 +1,49 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Avatar from 'Components/Avatar/Avatar';
+import React, { memo, useState, useEffect } from 'react';
 import FeedFooter from '../Comment/Footer';
 import './Feed.scss';
+import Header from '../Header/Header';
 
-const Feed = props => {
-  const { userName, userAvatar, feedImg, content, likeHit, comments } = props;
-  const [likeInfo, setLikeInfo] = useState({
-    hit: likeHit,
-    class: 'far fa-heart',
-    animate: '',
-  });
+const Feed = ({ feed }) => {
+  const { feedId, userName, userAvatar, feedImg, content, likeHit } = feed;
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const [like, setLike] = useState(false);
-  const [feedComments, setFeedComments] = useState(comments);
 
-  const handleLikeClick = () => {
-    setLike(!like);
-    updateLikeHit();
-  };
+  const toggleLike = () => setLike(prev => !prev);
 
-  const updateLikeHit = () => {
-    const likeHit = like ? likeInfo.hit - 1 : likeInfo.hit + 1;
-    const likeClass = `fa-heart ${like ? 'far' : 'fas is-liked'} `;
-    const likeAnimate = like ? '' : 'like-animation';
-
-    setLikeInfo({
-      hit: likeHit,
-      class: likeClass,
-      animate: likeAnimate,
-    });
+  const likeInfo = {
+    hit: like ? likeHit + 1 : likeHit - 1,
+    class: `fa-heart ${like ? 'fas is-liked' : 'far'} `,
+    animate: like && 'like-animation',
   };
 
   const handleComment = {
     add(comment) {
-      setFeedComments([comment, ...feedComments]);
+      setComments([comment, ...comments]);
     },
     delete({ id }) {
-      const comments = feedComments.filter(comment => id !== comment.id);
-      setFeedComments(comments);
+      setComments(comments.filter(comment => id !== comment.id));
     },
   };
 
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${feedId}/comments`
+      );
+      const data = await res.json();
+      setComments(data);
+      setIsLoading(false);
+    })();
+  }, []);
+
   return (
     <div className="feed-wrapper">
-      <header className="feed-header">
-        <div className="feed-header-left">
-          <Avatar image={userAvatar} size="medium" />
-          <div className="user-info feed">
-            <strong>
-              <Link to="#">{userName}</Link>
-            </strong>
-          </div>
-        </div>
-      </header>
+      <Header userAvatar={userAvatar} userName={userName} />
       <section className="feed-main">
-        <div className="feed-image-wrapper" onDoubleClick={handleLikeClick}>
+        <div className="feed-image-wrapper" onDoubleClick={toggleLike}>
           <i className={`${likeInfo.class} ${likeInfo.animate}`} />
           <img src={feedImg} alt="피드이미지" />
         </div>
@@ -63,7 +52,7 @@ const Feed = props => {
         <section className="feed-controller">
           <div className="icon-group left">
             <div className="icon-item">
-              <i className={likeInfo.class} onClick={handleLikeClick} />
+              <i className={likeInfo.class} onClick={toggleLike} />
             </div>
             <div className="icon-item">
               <i className="far fa-comment" />
@@ -87,16 +76,18 @@ const Feed = props => {
               </dd>
             </dl>
           </div>
-          <FeedFooter
-            userName={userName}
-            content={content}
-            comments={feedComments}
-            handleComment={handleComment}
-          />
+          {!isLoading && (
+            <FeedFooter
+              userName={userName}
+              content={content}
+              comments={comments}
+              handleComment={handleComment}
+            />
+          )}
         </div>
       </section>
     </div>
   );
 };
 
-export default Feed;
+export default memo(Feed);

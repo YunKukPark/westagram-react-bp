@@ -20,8 +20,8 @@ const Feeds = () => {
 
   return (
     <>
-      {feedContents.map(({ feedId, ...feedContent }) => (
-        <Feed key={feedId} {...feedContent} />
+      {feedContents.map(feed => (
+        <Feed key={feed.feedId} feed={feed} />
       ))}
     </>
   );

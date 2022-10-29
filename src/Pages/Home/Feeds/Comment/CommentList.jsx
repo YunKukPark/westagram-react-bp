@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 const CommentList = props => {
   const { onDeleteButtonClick, comment } = props;
-  const { userName, content } = comment;
+  const { name, body } = comment;
   const [isCommentLike, setIsCommentLike] = useState(false);
 
   return (
     <li className="feed-comment-item">
       <dl className="feed-desc feed-comment">
-        <dt className="feed-comment user-id">{userName}</dt>
-        <dd className="feed-comment feed-content">{content}</dd>
+        <dt className="feed-comment user-id">{name}</dt>
+        <dd className="feed-comment feed-content">{body}</dd>
       </dl>
       <div>
         <button type="button" onClick={() => setIsCommentLike(!isCommentLike)}>
