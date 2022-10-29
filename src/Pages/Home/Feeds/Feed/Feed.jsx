@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from 'Components/Avatar/Avatar';
-import CommentInput from './CommentInput';
-import FeedFooter from './&Footer';
-import './Feeds.scss';
+import FeedFooter from '../Comment/Footer';
+import './Feed.scss';
 
 const Feed = props => {
   const { userName, userAvatar, feedImg, content, likeHit, comments } = props;
@@ -32,15 +31,14 @@ const Feed = props => {
     });
   };
 
-  const addNewComment = newComment => {
-    setFeedComments([newComment, ...feedComments]);
-  };
-
-  const deleteComment = comment => {
-    const comments = [...feedComments].filter(
-      feedComment => feedComment.id !== comment.id
-    );
-    setFeedComments(comments);
+  const handleComment = {
+    add(comment) {
+      setFeedComments([comment, ...feedComments]);
+    },
+    delete({ id }) {
+      const comments = feedComments.filter(comment => id !== comment.id);
+      setFeedComments(comments);
+    },
   };
 
   return (
@@ -93,14 +91,10 @@ const Feed = props => {
             userName={userName}
             content={content}
             comments={feedComments}
-            onDeleteButtonClick={deleteComment}
+            handleComment={handleComment}
           />
         </div>
       </section>
-      <CommentInput
-        onButtonClick={addNewComment}
-        feedComments={feedComments} // 구체적인 형태로 내려주기보단 comment 로 내려주는게 좋다
-      />
     </div>
   );
 };

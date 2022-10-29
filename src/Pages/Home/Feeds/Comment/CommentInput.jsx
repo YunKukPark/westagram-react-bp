@@ -1,35 +1,34 @@
 import React, { useRef, useState } from 'react';
 
 const CommentInput = props => {
-  const { onButtonClick, feedComments } = props;
-  const [newCommentContent, setNewCommentContent] = useState('');
+  const { comments, handleComment } = props;
+  const [userComment, setNewUserComment] = useState('');
   const [buttonSwitch, setButtonSwitch] = useState(true);
-  const inputRef = useRef();
 
-  const commentLength = feedComments.length;
+  const commentLength = comments.length;
 
-  const onTextChange = e => {
+  const handleInput = e => {
+    if (e.code === 'Enter') onClickSubmitBtn();
     const inputValue = e.target.value;
-    setNewCommentContent(inputValue);
+    setNewUserComment(inputValue);
     inputValue ? setButtonSwitch(false) : setButtonSwitch(true);
   };
 
-  const onClickSubmit = () => {
-    if (!newCommentContent) return;
+  const onClickSubmitBtn = () => {
+    if (!userComment) return;
 
     const newComment = {
       id: commentLength + 1,
       userName: 'hello._.',
-      content: newCommentContent,
+      content: userComment,
     };
+    handleComment.add(newComment);
 
-    onButtonClick(newComment);
     setInputInit();
   };
 
   const setInputInit = () => {
-    inputRef.current.value = '';
-    setNewCommentContent('');
+    setNewUserComment('');
     setButtonSwitch(true);
   };
 
@@ -39,19 +38,16 @@ const CommentInput = props => {
         <i className="far fa-smile" />
       </button>
       <input
+        value={userComment}
         name="comment"
         type="text"
         placeholder="댓글 달기..."
-        onChange={e => onTextChange(e)}
-        onKeyPress={e => {
-          if (e.code === 'Enter') onClickSubmit();
-        }}
-        ref={inputRef}
+        onChange={handleInput}
       />
       <button
         className="comment-submit-button button-primary"
         disabled={buttonSwitch}
-        onClick={onClickSubmit}
+        onClick={onClickSubmitBtn}
       >
         게시
       </button>
