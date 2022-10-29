@@ -12,7 +12,7 @@ const FeedFooter = props => {
         <dd className="feed-content">{content}</dd>
       </dl>
       <ul className="feed-comment-list">
-        {comments.map((comment, idx) => {
+        {comments?.map((comment, idx) => {
           return isListOpen ? (
             <CommentList
               key={comment.id}
@@ -30,14 +30,14 @@ const FeedFooter = props => {
           );
         })}
       </ul>
-      {comments.length > 3 && (
+      {comments?.length > 3 && (
         <p
           className="comment-more"
           onClick={() => {
             setIsListOpen(!isListOpen);
           }}
         >
-          {isListOpen ? `간략히` : `댓글 ${comments.length}개 모두 보기`}
+          {isListOpen ? `간략히` : `댓글 ${comments?.length}개 모두 보기`}
         </p>
       )}
       <p className="feed-uploaded">4시간 전</p>

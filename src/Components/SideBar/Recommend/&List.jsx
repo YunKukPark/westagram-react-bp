@@ -21,23 +21,22 @@ const RecommendList = () => {
 
 export default RecommendList;
 
-// TODO: 안애 내용 수정, MOCK 데이터로 관리
 const RECOMMENDATIONS = [
   {
     key: 0,
-    avatarImage: './mock/images/recommend/01.jpg',
+    avatarImage: 'https://i.pravatar.cc/300?img=55',
     userName: 'console_table',
     recommendState: 'Instagram에 새로 가입했습니다',
   },
   {
     key: 1,
-    avatarImage: './mock/images/recommend/02.jpg',
+    avatarImage: 'https://i.pravatar.cc/300?img=45',
     userName: 'console_log',
     recommendState: '김개발',
   },
   {
     key: 2,
-    avatarImage: './mock/images/recommend/03.jpg',
+    avatarImage: 'https://i.pravatar.cc/300?img=35',
     userName: 'hello_world',
     recommendState: 'wecode_bootcamp님 외 12명이 팔로우합니다',
   },
