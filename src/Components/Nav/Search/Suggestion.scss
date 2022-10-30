@@ -20,12 +20,8 @@
     padding: 8px 16px;
     border-radius: 4px;
 
-    &:hover {
-      background-color: $background;
-    }
-
     &.highlighted {
-      background-color: $background;
+      background-color: $focused;
     }
 
     .combo-box-avatar {

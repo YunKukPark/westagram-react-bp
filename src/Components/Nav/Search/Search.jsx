@@ -11,7 +11,10 @@ const Search = () => {
   const [query, setQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const searchRef = useRef(null);
+  const userListRef = useRef([]);
+
   const filteredUsers = users.filter(user => user.username.includes(query));
 
   const openSearchBox = () => setIsSearchOpen(true);
@@ -24,13 +27,20 @@ const Search = () => {
 
   const onKeyDownSearchInput = ({ key }) => {
     if (!NAVIGATION_KEY.includes(key)) return;
-
     if (key === 'ArrowUp') {
       setCurrentIndex(prev => (prev === 0 ? prev : prev - 1));
+      userListRef.current[currentIndex].scrollIntoView({
+        block: 'end',
+        behavior: 'smooth',
+      });
     }
 
     if (key === 'ArrowDown') {
       setCurrentIndex(prev => prev + 1);
+      userListRef.current[currentIndex].scrollIntoView({
+        block: 'start',
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -64,6 +74,8 @@ const Search = () => {
         show={isSearchOpen}
         users={filteredUsers}
         currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+        ref={userListRef}
       />
     </div>
   );
