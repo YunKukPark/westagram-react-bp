@@ -4,8 +4,9 @@ import avatar from 'assets/images/avatar.jpg';
 import Avatar from 'Components/Avatar';
 import useOutsideClick from 'hooks/useOutsideClick';
 import { cn, cond } from 'lib/utils/styles';
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './Dropdown';
 import './Nav.scss';
+import Search from './Search/Search';
 
 const Nav = () => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
@@ -21,10 +22,7 @@ const Nav = () => {
         <Link to="#">
           <h1 className="logo">Westagram</h1>
         </Link>
-        <div className="search-input-wrapper">
-          <i className="ic-search" />
-          <input type="text" placeholder="검색" />
-        </div>
+        <Search />
         <div className="user-action-group">
           <div className="user-action-item">
             <i className="far fa-compass" />

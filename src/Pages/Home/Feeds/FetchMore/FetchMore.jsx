@@ -14,6 +14,7 @@ const FetchMore = ({ loading, page, setPage, limit }) => {
   }, []);
 
   return (
+    // Loading Spinner
     <div className={`lds-ring ${loading ? 'loading' : ''}`} ref={trigger}>
       <div />
       <div />

@@ -23,28 +23,6 @@
   }
 }
 
-.search-input-wrapper {
-  @include flexbox(start, center);
-  width: 215px;
-  height: 28px;
-  padding: 12px;
-  border: 1px solid $border;
-  border-radius: 3px;
-  background-color: $background;
-
-  .ic-search {
-    position: relative;
-    top: 1px;
-    margin-right: 6px;
-    color: $gray;
-    font-size: 10px;
-  }
-
-  input::placeholder {
-    color: $gray;
-  }
-}
-
 .user-action-group {
   @include flexbox;
 }

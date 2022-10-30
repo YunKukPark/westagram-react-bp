@@ -36,7 +36,7 @@ const Feed = ({ feed }) => {
       setComments(data);
       setIsLoading(false);
     })();
-  }, []);
+  }, [feedId]);
 
   return (
     <div className="feed-wrapper">
