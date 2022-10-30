@@ -1,0 +1,45 @@
+@import 'styles';
+
+.combo-box {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 375px;
+  max-height: 350px;
+  margin-top: 8px;
+  padding: 10px 0;
+  overflow: scroll;
+  transform: translateX(-50%);
+  border: 1px solid $border;
+  border-radius: 4px;
+  background-color: $background;
+
+  &-item {
+    @include flexbox(start, center);
+    height: 100%;
+    padding: 8px 16px;
+
+    .combo-box-avatar {
+      flex-shrink: 1;
+      margin-right: 16px;
+    }
+
+    .not-found-user {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    dl {
+      flex: 8;
+      line-height: 1;
+
+      dt {
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+    }
+  }
+}

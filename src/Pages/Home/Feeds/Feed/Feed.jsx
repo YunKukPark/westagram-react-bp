@@ -17,6 +17,7 @@ const Feed = ({ feed }) => {
     animate: like && 'like-animation',
   };
 
+  // TODO: useReducer로 수정
   const handleComment = {
     add(comment) {
       setComments([comment, ...comments]);
