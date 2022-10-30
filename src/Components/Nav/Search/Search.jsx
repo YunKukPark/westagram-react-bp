@@ -36,7 +36,9 @@ const Search = () => {
     }
 
     if (key === 'ArrowDown') {
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex(prev =>
+        prev === filteredUsers.length - 1 ? prev : prev + 1
+      );
       userListRef.current[currentIndex].scrollIntoView({
         block: 'start',
         behavior: 'smooth',
