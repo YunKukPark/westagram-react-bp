@@ -12,12 +12,21 @@
   transform: translateX(-50%);
   border: 1px solid $border;
   border-radius: 4px;
-  background-color: $background;
+  background-color: $white;
 
   &-item {
     @include flexbox(start, center);
     height: 100%;
     padding: 8px 16px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $background;
+    }
+
+    &.highlighted {
+      background-color: $background;
+    }
 
     .combo-box-avatar {
       flex-shrink: 1;

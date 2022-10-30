@@ -1,21 +1,37 @@
 import useOutsideClick from 'hooks/useOutsideClick';
 import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
-import UserCombobox from './UserCombobox';
+import Suggestion from './Suggestion';
 import './Search.scss';
+
+const NAVIGATION_KEY = ['ArrowUp', 'ArrowDown'];
 
 const Search = () => {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState('');
-  const searchRef = useRef(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const searchRef = useRef(null);
+  const filteredUsers = users.filter(user => user.username.includes(query));
+
   const openSearchBox = () => setIsSearchOpen(true);
   const closeSearchBox = () => setIsSearchOpen(false);
 
-  const filteredUsers = users.filter(user => user.username.includes(query));
-
-  const onChangeInput = ({ target }) => {
+  const onChangeSearchInput = ({ target }) => {
     setQuery(target.value);
+    setCurrentIndex(0);
+  };
+
+  const onKeyDownSearchInput = ({ key }) => {
+    if (!NAVIGATION_KEY.includes(key)) return;
+
+    if (key === 'ArrowUp') {
+      setCurrentIndex(prev => (prev === 0 ? prev : prev - 1));
+    }
+
+    if (key === 'ArrowDown') {
+      setCurrentIndex(prev => prev + 1);
+    }
   };
 
   useOutsideClick(searchRef, closeSearchBox);
@@ -39,10 +55,16 @@ const Search = () => {
         value={query}
         type="text"
         placeholder="검색"
-        onChange={onChangeInput}
+        onChange={onChangeSearchInput}
+        onKeyDown={onKeyDownSearchInput}
         onFocus={openSearchBox}
+        onBlur={() => setCurrentIndex(0)}
       />
-      <UserCombobox show={isSearchOpen} users={filteredUsers} />
+      <Suggestion
+        show={isSearchOpen}
+        users={filteredUsers}
+        currentIndex={currentIndex}
+      />
     </div>
   );
 };
