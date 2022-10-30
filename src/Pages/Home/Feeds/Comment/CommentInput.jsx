@@ -51,7 +51,7 @@ const CommentInput = props => {
         type="text"
         placeholder="댓글 달기..."
         onChange={handleInput}
-        onKeyDown={onKeyDownEnter}
+        onKeyPress={onKeyDownEnter}
       />
       <button
         className="comment-submit-button button-primary"
