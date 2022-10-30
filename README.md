@@ -1,6 +1,6 @@
 # TODOs
 
-- [ ] Infinity Scroll(pagination)
+- [x] Infinity Scroll(pagination)
 - [ ] more refactoring (page > feed & overall style)
-- [ ] refactor clean up unnecessary states, props
+- [x] refactor clean up unnecessary states, props
 - [ ] README doc
